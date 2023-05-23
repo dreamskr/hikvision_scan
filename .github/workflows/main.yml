@@ -15,7 +15,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Windows artifact
-          path: dist/hikvision_scan.exe
+          path: build/main/hikvision_scan.exe
   package-linux:
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +25,7 @@ jobs:
           pip3 install pyinstaller
       - name: Package hikvision_scan
         run: |
-          pyinstaller hikvision_scan.py 
+          pyinstaller main.py 
       - uses: actions/upload-artifact@v3
         with:
           name: Linux artifact
