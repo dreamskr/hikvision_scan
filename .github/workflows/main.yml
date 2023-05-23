@@ -1,0 +1,38 @@
+name: hikvision_Package
+on: [push, pull_request]
+
+jobs:
+  package-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python Environment
+        run: |
+          pip3 install pyinstaller pyqt5==5.15.6 lxml
+      - name: Build LabelImg
+        run: |
+          pyrcc5 -o libs/resources.py resources.qrc
+      - name: Package LabelImg
+        run: |
+          pyinstaller --hidden-import=pyqt5 --hidden-import=lxml -F -n "labelImg" -c labelImg.py -p ./libs -p ./
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Windows artifact
+          path: dist/labelImg.exe
+  package-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python Environment
+        run: |
+          pip3 install pyinstaller pyqt5==5.15.6 lxml
+      - name: Build LabelImg
+        run: |
+          pyrcc5 -o libs/resources.py resources.qrc
+      - name: Package LabelImg
+        run: |
+          pyinstaller --hidden-import=pyqt5 --hidden-import=lxml -F -n "labelImg" -c labelImg.py -p ./libs -p ./
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Linux artifact
+          path: dist/labelImg
