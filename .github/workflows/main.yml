@@ -11,7 +11,7 @@ jobs:
           pip3 install pyinstaller
       - name: Package hikvision_scan
         run: |
-          pyinstaller main.py -p
+          pyinstaller main.py
       - uses: actions/upload-artifact@v3
         with:
           name: Windows artifact
