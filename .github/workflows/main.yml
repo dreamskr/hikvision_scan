@@ -15,12 +15,6 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.outputs.VERSION }}
-          release_name: ${{ steps.outputs.VERSION }}   
-          
-      - name: Test Release
-        run: echo "The job was automatically triggered by a ${{ github.event_name }} event. ${{ steps.outputs.upload_url }}"    
           
       - name: Package 
         run: |
