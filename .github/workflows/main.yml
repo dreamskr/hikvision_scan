@@ -13,7 +13,8 @@ jobs:
       - name: Package 
         run: |
           pyinstaller main.py
-          tar -czvf main.tar.gz build/main/main.exe build/main/config.ini
+          dir
+          tar -czvf main.tar.gz build\main\main.exe build\main\config.ini
           
       - name: Upload
         uses: softprops/action-gh-release@v1
