@@ -27,7 +27,14 @@ jobs:
         with:
           name: Windows artifact
           path: dist/main/main.exe
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+          
+      - name: Upload exe file
+        uses: actions/upload-artifact@v2
+        with:
+          name: main
+          path: dist/main/main.exe
           
   package-linux:
     runs-on: ubuntu-latest
