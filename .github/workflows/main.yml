@@ -28,10 +28,6 @@ jobs:
           name: Windows artifact
           path: dist/main/main.exe
 
-      - name: Upload To WeTransfer
-        run: |
-          ./transfer wet -s -p 16 --no-progress dist/main/main.exe 2>&1 | tee wetransfer.log 
-          echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"    
           
   package-linux:
     runs-on: ubuntu-latest
