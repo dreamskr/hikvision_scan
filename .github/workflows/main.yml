@@ -25,10 +25,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup Python Environment
         run: |
-          pip3 install pyinstaller pyqt5==5.15.6
-      - name: Build hikvision
-        run: |
-          pyrcc5 -o libs/resources.py resources.qrc
+          pip3 install pyinstaller
       - name: Package hikvision
         run: |
           pyinstaller -c main.py
