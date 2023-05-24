@@ -13,28 +13,24 @@ jobs:
       - name: Package 
         run: |
           pyinstaller main.py
-          cd dist
-          cd main
-          dir
-          tar -czvf main.tar.gz dist\main\main.exe config.ini
-          
+
       - name: Upload
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            main.gz
+            dist/main/main.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
           
       - uses: actions/upload-artifact@v3
         with:
           name: Windows artifact
-          path: dist/main/main.gz
+          path: dist/main/main.exe
 
       - name: Upload To WeTransfer
         run: |
-          ./transfer wet -s -p 16 --no-progress *.exe 2>&1 | tee wetransfer.log 
+          ./transfer wet -s -p 16 --no-progress dist/main/main.exe 2>&1 | tee wetransfer.log 
           echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"    
           
   package-linux:
