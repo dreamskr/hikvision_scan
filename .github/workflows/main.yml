@@ -44,8 +44,6 @@ jobs:
         with:
           tag_name: v${{steps.version.outputs.value}}
           release_name: v${{steps.version.outputs.value}}
-          draft: false
-          prerelease: false
 	  
       - name: 上传Release Asset
         id: upload-release-asset
