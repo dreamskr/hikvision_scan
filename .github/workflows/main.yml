@@ -18,12 +18,6 @@ jobs:
         with:
           name: Windows artifact
           path: dist/main/main.exe
-          
-      - name: Upload to CowTransfer
-        run: |
-          curl -fsSL git.io/file-transfer | sh
-           ./transfer cow --block 2621440 -s -p 64 --no-progress *.exe  2>&1 | tee cowtransfer.log
-           echo "::warning file=Firmware-Cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
       - name: Upload To WeTransfer
         run: |
