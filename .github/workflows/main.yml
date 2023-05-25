@@ -1,5 +1,13 @@
 name: hikvision_Package
-on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - 'config.ini'
+      - 'windows.yml'
+  pull_request:
+    paths-ignore:
+      - 'config.ini'
+      - 'windows.yml'
 
 jobs:
   package-windows:
