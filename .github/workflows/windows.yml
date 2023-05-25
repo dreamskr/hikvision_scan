@@ -22,18 +22,23 @@ jobs:
         run: |
           pyinstaller main.py
           dir
-          cd           
+
       - name: 压缩...
         run: |
           Compress-Archive -Path dist/main/main.exe main.zip
           dir
+          echo "${{ github.event.repository.full_name }}"
+          echo ${{ github.event.repository.full_name }}
+          echo ${{ github.event.ref }}
+          echo ${{ steps.createReleaseWin.outputs.upload_url }}
+          echo ${{ env.uploadUrl }}
          
       - name: 查询github-Release
         id: queryReleaseWin
         if: startsWith(github.event.ref, 'refs/tags/')
         shell: pwsh
         env:
-          githubFullName: main.zip
+          githubFullName: ${{ github.event.repository.full_name }}
           ref: ${{ github.event.ref }}
         run: |
           [string]$tag = ${env:ref}.Substring(${env:ref}.LastIndexOf('/') + 1)
