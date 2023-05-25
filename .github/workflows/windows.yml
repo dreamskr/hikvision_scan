@@ -33,7 +33,7 @@ jobs:
         if: startsWith(github.event.ref, 'refs/tags/')
         shell: pwsh
         env:
-          githubFullName: ${{ github.event.repository.full_name }}
+          githubFullName: main.zip
           ref: ${{ github.event.ref }}
         run: |
           [string]$tag = ${env:ref}.Substring(${env:ref}.LastIndexOf('/') + 1)
