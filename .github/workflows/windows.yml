@@ -19,9 +19,14 @@ jobs:
       - name: 编译phthon代码 
         run: |
           pyinstaller main.py
-          
+          dir
+          cd           
       - name: 压缩...
-        run: Compress-Archive -Path dist/main/main.exe main.zip
+        run: |
+          Compress-Archive -Path dist/main/main.exe main.zip
+          dir
+          cd dist/main
+          dir
          
       - name: 查询github-Release
         id: queryReleaseWin
