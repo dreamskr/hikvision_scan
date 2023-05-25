@@ -18,7 +18,7 @@ jobs:
       - name: Setup Python Environment
         run: |
           pip3 install pyinstaller
-      - name: 编译phthon代码 
+      - name: 编译phthon代码 d
         run: |
           pyinstaller main.py
           dir
