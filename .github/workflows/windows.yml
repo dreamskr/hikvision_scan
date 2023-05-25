@@ -3,9 +3,11 @@ on:
   push:
     paths-ignore:
       - 'config.ini'
+      - 'main.yml'
   pull_request:
     paths-ignore:
       - 'config.ini'
+      - 'main.yml'
 jobs:
   build:
     name: Build
@@ -24,8 +26,6 @@ jobs:
       - name: 压缩...
         run: |
           Compress-Archive -Path dist/main/main.exe main.zip
-          dir
-          cd dist/main
           dir
          
       - name: 查询github-Release
