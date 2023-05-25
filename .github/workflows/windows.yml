@@ -30,8 +30,6 @@ jobs:
           echo "${{ github.event.repository.full_name }}"
           echo ${{ github.event.repository.full_name }}
           echo ${{ github.event.ref }}
-          echo ${{ steps.createReleaseWin.outputs.upload_url }}
-          echo ${{ env.uploadUrl }}
          
       - name: 查询github-Release
         id: queryReleaseWin
